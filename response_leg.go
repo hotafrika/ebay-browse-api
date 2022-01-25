@@ -1,5 +1,11 @@
 package browse
 
+//GetItemByLegacyIdResponse is a responce for GetItemByLegacyIdRequest
+type GetItemByLegacyIdResponse struct {
+	Item
+}
+
+//GetItemsByItemGroupResponse is a responce for GetItemsByItemGroupRequest
 type GetItemsByItemGroupResponse struct {
 	CommonDescriptions []CommonDescription `json:"commonDescriptions"`
 	Items              []Item              `json:"items"`
