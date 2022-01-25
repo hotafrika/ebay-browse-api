@@ -39,7 +39,7 @@ func (r *ItemSummarySearchRequest) WithOffset(offset int) *ItemSummarySearchRequ
 	return r
 }
 
-// WithCategories adds categories for search to ItemSummarySearchRequest
+// WithCategoryID adds categories for search to ItemSummarySearchRequest
 // Leave empty to omit
 //func (r *ItemSummarySearchRequest) WithCategories(categories ...string) *ItemSummarySearchRequest {
 //	r.CategoryIDs = categories

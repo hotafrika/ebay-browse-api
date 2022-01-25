@@ -76,3 +76,31 @@ func (s *Service) NewItemSummarySearchRequest() *ItemSummarySearchRequest {
 	r.FilterMap = make(map[string]Filterer)
 	return r
 }
+
+// NewGetItemByLegacyIdRequest creates new GetItemByLegacyIdRequest
+func (s *Service) NewGetItemByLegacyIdRequest() *GetItemByLegacyIdRequest {
+	r := &GetItemByLegacyIdRequest{}
+	r.url = URLProductionGetItemByLegacyId
+	if s.isSandbox {
+		r.url = URLSandboxGetItemByLegacyId
+	}
+	r.client = resty.New().
+		SetTimeout(s.timeout).
+		SetHeader("X-EBAY-C-MARKETPLACE-ID", s.marketplace).
+		SetHeader("Authorization", strings.Join([]string{"Bearer", s.appToken}, " "))
+	return r
+}
+
+// NewGetItemsByItemGroupRequest creates new GetItemsByItemGroupRequest
+func (s *Service) NewGetItemsByItemGroupRequest() *GetItemsByItemGroupRequest {
+	r := &GetItemsByItemGroupRequest{}
+	r.url = URLProductionGetItemsByItemGroup
+	if s.isSandbox {
+		r.url = URLSandboxGetItemsByItemGroup
+	}
+	r.client = resty.New().
+		SetTimeout(s.timeout).
+		SetHeader("X-EBAY-C-MARKETPLACE-ID", s.marketplace).
+		SetHeader("Authorization", strings.Join([]string{"Bearer", s.appToken}, " "))
+	return r
+}
